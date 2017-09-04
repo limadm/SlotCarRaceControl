@@ -1,6 +1,5 @@
 /* Arduino Racing
- * © 2017 Daniel M. de Lima, Mayan Mathen
- */
+ * © 2017 Daniel Lima, Mayan Mathen */
 
 #include <FastInputs.h>
 #include <ShiftRegister.h>
@@ -81,7 +80,7 @@ struct {
 } sys;
 
 ShiftRegister shReg(dDATA,dSHCP,dSTCP);
-SerialLCD lcd(shReg, 6, 5, 4, 3, 2, 1);
+SerialLCD lcd(shReg, 1, 3, 4, 5, 6, 7);
 FastInputs<Vps,ir0,ir1,swLIGHTS,swTRACKS,swPREV,swNEXT> input;
 
 void setup() {
