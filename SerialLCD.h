@@ -1,1 +1,1 @@
-../../libraries/SerialLCD/SerialLCD.h
+libs/SerialLCD/SerialLCD.h

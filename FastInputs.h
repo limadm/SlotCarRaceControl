@@ -1,1 +1,1 @@
-../../libraries/FastInputs/FastInputs.h
+libs/FastInputs/FastInputs.h

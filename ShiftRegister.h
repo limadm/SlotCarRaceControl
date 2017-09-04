@@ -1,1 +1,1 @@
-../../libraries/ShiftRegister/ShiftRegister.h
+libs/ShiftRegister/ShiftRegister.h

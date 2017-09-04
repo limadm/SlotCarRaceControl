@@ -1,0 +1,9 @@
+[submodule "libs/SerialLCD"]
+	path = libs/SerialLCD
+	url = http://github.com/limadm/arduino-serial-lcd
+[submodule "libs/ShiftRegister"]
+	path = libs/ShiftRegister
+	url = http://github.com/limadm/arduino-shift-register
+[submodule "libs/FastInputs"]
+	path = libs/FastInputs
+	url = http://github.com/limadm/arduino-fast-inputs
