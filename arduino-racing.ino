@@ -1,9 +1,10 @@
 /* Arduino Racing
- * © 2017 Daniel Lima, Mayan Mathen
+ * © 2017 Daniel M. de Lima, Mayan Mathen
  */
 
 #include <FastInputs.h>
-#include <u7seg.h>
+#include <ShiftRegister.h>
+#include <SerialLCD.h>
 
 // timing
 static long _dt;
@@ -29,9 +30,9 @@ enum MyPins {
   led2 = 12,
   ledIR = 13,
   SPEAKER = A3,
-  dDAT = A4,
-  dCLK = A5,
-  dLAT = 2,
+  dDATA = A4,
+  dSHCP = A5,
+  dSTCP = 2,
 };
 
 static void beep(int t) {
@@ -79,8 +80,9 @@ struct {
   }
 } sys;
 
+ShiftRegister shReg(dDATA,dSHCP,dSTCP);
+SerialLCD lcd(shReg, 6, 5, 4, 3, 2, 1);
 FastInputs<Vps,ir0,ir1,swLIGHTS,swTRACKS,swPREV,swNEXT> input;
-u7seg<dDAT,dCLK> lcd;
 
 void setup() {
   pinMode(Vps, INPUT);
@@ -97,9 +99,6 @@ void setup() {
   pinMode(led2, OUTPUT);
   pinMode(ledIR, OUTPUT);
   pinMode(SPEAKER, OUTPUT);
-  pinMode(dDAT, OUTPUT);
-  pinMode(dCLK, OUTPUT);
-  pinMode(dLAT, OUTPUT);
   speak();
   input();
   sys.lowIR = !input[ir0] && !input[ir1];
@@ -114,7 +113,7 @@ void loop() {
   power();
   voltage();
   sys.state();
-  display();
+  //display();
   t0 += _dt;
 }
 
@@ -141,9 +140,7 @@ static void speak() {
 }
 
 static void display() {
-  digitalWrite(dLAT, 0);
-  lcd.refresh();
-  digitalWrite(dLAT, 1);
+  //lcd.refresh();
 }
 
 static void atSetup() {
