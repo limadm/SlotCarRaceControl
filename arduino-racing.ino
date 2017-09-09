@@ -12,30 +12,30 @@ static long _dt;
 // pin assignment
 enum MyPins {
 // power supply voltage
-  Vps = A2,
+  Vps = A0,
 // track photodiodes
-  ir0 = A0,
-  ir1 = A1,
+  ir0 = A1,
+  ir1 = A2,
 // buttons
-  swLIGHTS = 4,
-  swTRACKS = 5,
-  swPREV = 6,
-  swNEXT = 7,
+  swLIGHTS = 2,
+  swTRACKS = 3,
+  swPREV = 4,
+  swNEXT = 5,
 // outputs
-  pwrLIGHTS = 8,
-  pwrTRACKS = 9,
-  led0 = 10,
-  led1 = 11,
-  led2 = 12,
-  ledIR = 13,
-  SPEAKER = A3,
-  dDATA = A4,
-  dSHCP = A5,
-  dSTCP = 2,
+  pwrLIGHTS = 9,
+  pwrTRACKS = 10,
+  led0 = 6,
+  led1 = 7,
+  led2 = 8,
+  ledIR = A3,
+  BUZZR = A4,
+  dDATA = 11,
+  dSHCP = 13,
+  dSTCP = 12,
 };
 
 static void beep(int t) {
-  tone(SPEAKER, 2048, t);
+  tone(BUZZR, 2048, t);
 }
 
 struct Player {
@@ -97,7 +97,7 @@ void setup() {
   pinMode(led1, OUTPUT);
   pinMode(led2, OUTPUT);
   pinMode(ledIR, OUTPUT);
-  pinMode(SPEAKER, OUTPUT);
+  pinMode(BUZZR, OUTPUT);
   speak();
   input();
   sys.lowIR = !input[ir0] && !input[ir1];
@@ -131,11 +131,11 @@ void voltage() {
 }
 
 static void speak() {
-	tone(SPEAKER, 1864, 200);
-	tone(SPEAKER, 2217, 200);
-	tone(SPEAKER, 1975, 200);
-	tone(SPEAKER, 2093, 200);
-	tone(SPEAKER, 2217, 200);
+	tone(BUZZR, 1864, 200);
+	tone(BUZZR, 2217, 200);
+	tone(BUZZR, 1975, 200);
+	tone(BUZZR, 2093, 200);
+	tone(BUZZR, 2217, 200);
 }
 
 static void display() {
